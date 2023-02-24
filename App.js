@@ -1,10 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import Header from "./components/header/Header";
 
 export default function App() {
+  const headerData = {
+    heading: "Login",
+    text: "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy",
+  };
   return (
     <View style={styles.container}>
-      <Text>Hello World.....</Text>
+      <Header heading={headerData.heading} text={headerData.text} />
     </View>
   );
 }
