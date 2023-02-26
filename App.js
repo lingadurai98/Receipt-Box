@@ -1,7 +1,4 @@
-import { Alert, StyleSheet, Text, View } from "react-native";
-import Button from "./components/button/Botton";
-import Header from "./components/header/Header";
-import Input from "./components/input/Input";
+import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function App() {
