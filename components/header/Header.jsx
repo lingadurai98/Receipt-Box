@@ -4,7 +4,7 @@ import Logo from "../../assets/images/logo.png";
 const Header = (props) => {
   console.log(props);
   return (
-    <View style={styles.headerContainer}>
+    <View style={[styles.headerContainer]}>
       <Image style={styles.logo} source={Logo} />
       <Text style={styles.heading}>{props.heading}</Text>
       <Text style={styles.text}>{props.text}</Text>

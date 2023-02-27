@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const Button = (props) => {
   return (
-    <View style={styles.buttonOuterContainer}>
+    <View style={[props.style, styles.buttonOuterContainer]}>
       <Pressable
         style={({ pressed }) =>
           pressed
