@@ -11,3 +11,10 @@ export const dummyEmailList = [
   "detrans2@receiptbox.com",
   "detrans3@receiptbox.com",
 ];
+
+// Otp Screenn
+
+export const otpVerificationText = {
+  heading: "OTP Verification",
+  text: "We have sent you an One time password to your registered email. Please enter the OTP below",
+};

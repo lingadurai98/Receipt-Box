@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import CreateEmailAddress from "./screens/createEmailAddress/CreateEmailAddress";
+import OTP_Verification from "./screens/otp_verification/OTP_Verification";
 
 export default function App() {
   return (
     <LinearGradient style={styles.container} colors={["#d2f5eb", "#026838"]}>
-      <CreateEmailAddress />
+      <OTP_Verification />
     </LinearGradient>
   );
 }
