@@ -14,13 +14,10 @@ const Signup = () => {
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
   const [confirmpassword, setconfirmpassword] = useState('')
-  const [errMsg, seterrMsg] = useState({
-    email: '',
-    password: '',
-    confirmpassword: '',
-  })
   const [isError, setIsError] = useState(false)
-  const [name, setname] = useState('aahi')
+  const [emailerror, setemailerror] = useState('')
+  const [pwerror, setpwerror] = useState('')
+  const [cnfpwerror, setcnfpwerror] = useState('')
 
 
 
@@ -29,109 +26,74 @@ const Signup = () => {
       text: 'Close', onPress: () => console.log('closed')
     }])
   }
-  const changeHandler = (val) => {
-    setname(val)
-  }
+
   const handleLogin = () => {
-    seterrMsg({
-      email: '',
-      password: '',
-      confirmpassword: '',
-    })
+    setemailerror('')
+    setpwerror('')
+    setcnfpwerror('')
   }
 
-  const emailValidation = () => {
+  const emailRegex = /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/
 
-  }
-  function passwordValidation() {
-
-
-  }
   const handleSignup = () => {
-    const emailRegex = /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/
-    const testemail = emailRegex.test(email);
+    var testemail = emailRegex.test(email);
+
     if (testemail == false || email == '') {
       setIsError(true)
-      seterrMsg({
-        email: 'Invalid Email',
-        password: '',
-        confirmpassword: '',
-      })
-
+      setemailerror('Invalid Email')
+      
     }
-    // if (testemail == true && email != '') {
-    setIsError(false)
-    seterrMsg({
-      email: '',
-      password: '',
-      confirmpassword: '',
-    })
-    // }
+    else {
+      setIsError(false)
+      setemailerror('')
+    }
 
+
+
+
+
+
+    //password
     const passwordRegex = /(?=[a-z]+[\W]+[0-9]+)|([\W]+[a-z]+[0-9]+)|([\W]+[0-9]+[a-z]+)|([a-z]+[0-9]+[\W]+)|([0-9]+[\W]+[a-z]+)|([0-9]+[a-z]+[\W]+)/ig
-    const testpassword = passwordRegex.test(password);
+    var testpassword = passwordRegex.test(password);
 
     if (password == "" || password.length < 8) {
       setIsError(true)
-      seterrMsg({
-        email: '',
-        password: 'Sorry, the password must atleast be 8 characters',
-        confirmpassword: '',
-      })
-      return
-    }
-    if (testpassword == false) {
+      setpwerror('Sorry, the password must atleast be 8 characters')
+
+    } else if (testpassword == false) {
       setIsError(true)
-      seterrMsg({
-        email: '',
-        password: 'Sorry, the password must contain atleast one alphabet, one digit and a special character.',
-        confirmpassword: '',
-      })
-      return
+      setpwerror('Sorry, the password must contain atleast one alphabet, one digit and a special character.')
+
     }
-    // else {
-    setIsError(false)
-    seterrMsg({
-      email: '',
-      password: '',
-      confirmpassword: '',
-    })
-    // }
-    const testconfirmpassword = passwordRegex.test(confirmpassword);
-    
+    else {
+      setIsError(false)
+      setpwerror('')
+    }
+
+
+
+
+    //cnfrmpw
+    var testconfirmpassword = passwordRegex.test(confirmpassword);
+
     if (confirmpassword == "" || confirmpassword.length < 8) {
       setIsError(true)
-      seterrMsg({
-        email: '',
-        password: '',
-        confirmpassword: 'Sorry, the password must atleast be 8 characters',
-      })
-      return
-    }
-    if (testconfirmpassword == false) {
+      setcnfpwerror('Sorry, the password must atleast be 8 characters')
+
+    } else if (testconfirmpassword == false) {
       setIsError(true)
-      seterrMsg({
-        email: '',
-        password: '',
-        confirmpassword: 'Sorry, the password must contain atleast one alphabet, one digit and a special character.',
-      })
-      return
-    }
-    if (confirmpassword!=password) {
+      setcnfpwerror('Sorry, the password must contain atleast one alphabet, one digit and a special character.')
+
+    } else if (confirmpassword != password) {
       setIsError(true)
-    seterrMsg({
-      email: '',
-      password: '',
-      confirmpassword: 'Passwords do not match',
-    })
+      setcnfpwerror('Passwords do not match')
     }
-    // else {
-    setIsError(false)
-    seterrMsg({
-      email: '',
-      password: '',
-      confirmpassword: '',
-    })
+    else {
+      setIsError(false)
+      setcnfpwerror('')
+    }
+
   }
 
   return (
@@ -155,9 +117,15 @@ const Signup = () => {
           <Input
             placeholder='Enter Your Email Address'
             style={styles.input}
-            onChangeText={(text) => setemail(text)}
+            onChangeText={(text) => {
+              // emailtest = emailRegex.test(text)
+              //   {emailtest ? setmailTestState(emailtest) : setmailTestState(emailtest)}
+              setemail(text)
+              // console.log(mailTestState)
+            }}
             isError={isError}
-            errMsg={errMsg.email}
+            // errMsg={errMsg.email}
+            errMsg={emailerror}
           />
 
         </View>
@@ -174,10 +142,16 @@ const Signup = () => {
           <Input
             placeholder='Enter Your Password'
             secureTextEntry={secureTextEntry}
-            onChangeText={(text) => setpassword(text)}
+            onChangeText={(text) => {
+
+              setpassword(text)
+
+            }}
             style={styles.input}
             isError={isError}
-            errMsg={errMsg.password}
+            // errMsg={errMsg.password}
+            errMsg={pwerror}
+
           />
 
         </View>
@@ -194,7 +168,8 @@ const Signup = () => {
             onChangeText={(text) => setconfirmpassword(text)}
             style={styles.input}
             isError={isError}
-            errMsg={errMsg.confirmpassword}
+            // errMsg={errMsg.confirmpassword}
+            errMsg={cnfpwerror}
           />
 
         </View>
