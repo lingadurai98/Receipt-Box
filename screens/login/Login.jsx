@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   Text,
   TextInput,
-  
   StyleSheet,
   TouchableOpacity,
   Image,
@@ -43,22 +42,23 @@ const LoginScreen = () => {
       setPasswordError("Please enter your password");
       return;
     }
- 
+
     if (!passwordRegex.test(password)) {
-      setPasswordError("Please enter a valid password (minimum 8 characters, at least one letter, one number and one special character)");
+      setPasswordError(
+        "Please enter a valid password (minimum 8 characters, at least one letter, one number and one special character)"
+      );
       return;
     }
     setPasswordError("");
-
-   
   };
 
   return (
     <SafeAreaView style={styles.container}>
-     <Header 
-      heading="Log-In"
-      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor nunc sit amet dolor venenatis, at sagittis mi porttitor. Vestibulum sit amet nulla a enim."/>
-      
+      <Header
+        heading="Log-In"
+        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor nunc sit amet dolor venenatis, at sagittis mi porttitor. Vestibulum sit amet nulla a enim."
+      />
+
       <TextInput
         style={[styles.input, emailError && styles.errorBorder]}
         placeholder="Email"
@@ -90,7 +90,7 @@ const LoginScreen = () => {
       {passwordError ? (
         <Text style={styles.errorMessage}>{passwordError}</Text>
       ) : null}
-      <Button heading="Log-In" children="Log in" onPress={handleLogin}/>
+      <Button heading="Log-In" children="Log in" onPress={handleLogin} />
       {/* <Button title="Log in" onPress={handleLogin} /> */}
       <SafeAreaView style={styles.forgotPasswordContainer}>
         <TouchableOpacity onPress={() => {}}>
@@ -121,7 +121,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderTopEndRadius: 20,
     borderTopLeftRadius: 20,
-    
   },
   forgotPasswordContainer: {
     marginVertical: 10,
@@ -137,20 +136,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
- 
-  
+
   input: {
     height: 50,
     width: 300,
-    borderColor: "#0D0D0D", 
+    borderColor: "#0D0D0D",
     borderWidth: 2,
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 20,
     fontSize: 18,
-    color: "#0D0D0D", 
-    backgroundColor: "#FFFFFF", 
-    marginTop:50,
+    color: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
+    marginTop: 50,
   },
   passwordContainer: {
     width: 300,
