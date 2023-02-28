@@ -20,7 +20,7 @@ function CreateAddress() {
           style={styles.input}
           placeholder="Key in a name for your Email Address"
         />
-        <Button style={styles.button}>Subit</Button>
+        <Button style={styles.button}>Sumbit</Button>
         <View style={styles.summmary__container}>
           <Text style={styles.summary__text}>
             Hey, Congratulations -
