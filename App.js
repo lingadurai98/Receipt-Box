@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import CreateEmailAddress from "./screens/createEmailAddress/CreateEmailAddress";
+import LoginScreen from "./screens/login/Login";
+import Signup from "./screens/signup/Signup";
 
 export default function App() {
   return (
     <LinearGradient style={styles.container} colors={["#d2f5eb", "#026838"]}>
-      <CreateEmailAddress />
+      {/* <CreateEmailAddress /> */}
+      <LoginScreen />
+      {/* <Signup/> */}
     </LinearGradient>
   );
 }

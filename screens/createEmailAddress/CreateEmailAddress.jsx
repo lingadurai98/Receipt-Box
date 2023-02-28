@@ -41,12 +41,12 @@ function CreateEmailAddress() {
           placeholder="Key in a name for your Email Address"
         />
         <Button style={styles.button} onPress={submitHandler}>
-          Subit
+          Submit
         </Button>
         <View style={styles.summmary__container}>
           {!data.isError && data.showMsg && (
             <Text style={styles.summary__text}>
-              Hey, Congratulations -
+              Hey, Congratulations 
               <Text style={styles.email}>{data.input}</Text>
               is available and has been created.
             </Text>
