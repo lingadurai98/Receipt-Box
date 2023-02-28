@@ -1,15 +1,50 @@
-import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Alert,
+} from "react-native";
 import Header from "../../components/header/Header";
 import { otpVerificationText } from "../../constants/Constant";
 import OtpInputs from "react-native-otp-inputs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Button from "../../components/button/Botton";
+import CountDown from "react-native-countdown-component";
 
 function OTP_Verification() {
   const [optText, setOtpText] = useState("");
+  const [resend, setResend] = useState(true);
+  const [timer, setTimer] = useState(0);
+  // const [id, setId] = useState(null);
+
+  const submitHandler = () => {};
 
   const otpHandler = (otp) => {
     setOtpText(otp);
   };
+
+  const resendHandler = () => {
+    setResend(false);
+    setTimer(6);
+  };
+
+  useEffect(() => {
+    let interval = null;
+    if (resend === false) {
+      if (timer === 0) {
+        console.log(resend);
+        // setResend(true);
+      } else {
+        interval = setInterval(() => {
+          setTimer((timer) => timer - 1);
+        }, 1000);
+      }
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
+
   return (
     <View style={styles.rootContainer}>
       <Header
@@ -18,23 +53,44 @@ function OTP_Verification() {
       />
       <View style={styles.otpContainer}>
         <OtpInputs
-          handleChange={(code) => setOtpText(code)}
+          handleChange={otpHandler}
+          autofillFromClipboard={false}
           numberOfInputs={6}
+          keyboardType="default"
           inputStyles={{
-            borderWidth: 1,
-            borderRadius: 5,
+            borderColor: "#00000d",
+            borderBottomWidth: 1,
             padding: 5,
             fontSize: 20,
             textAlign: "center",
-            height: 30,
+            height: 35,
+            color: "#e8f3e9",
           }}
           inputContainerStyles={{
             marginVertical: 20,
             marginHorizontal: 10,
-            width: 20,
+            width: 30,
           }}
           secureTextEntry={false}
         />
+      </View>
+      <Button onPress={submitHandler}>Submit</Button>
+      <View style={styles.resend__container}>
+        <Text style={styles.resend__text}>Did not receive OTP? </Text>
+        {resend ? (
+          <Pressable style={styles.resend__button} onPress={resendHandler}>
+            <Text style={styles.resend__button__text}>Resend OTP</Text>
+          </Pressable>
+        ) : (
+          <CountDown
+            until={timer}
+            size={15}
+            // onFinish={() => setResend(true)}
+            digitStyle={{ backgroundColor: "#FFF" }}
+            digitTxtStyle={{ color: "#1CC625" }}
+            timeToShow={["S"]}
+          />
+        )}
       </View>
     </View>
   );
@@ -48,7 +104,22 @@ const styles = StyleSheet.create({
   otpContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 50,
+    marginVertical: 50,
+  },
+  resend__container: {
+    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    flexDirection: "row",
+  },
+  resend__button: {
+    marginLeft: 5,
+  },
+  resend__button__text: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#0626de",
   },
 });
 export default OTP_Verification;
