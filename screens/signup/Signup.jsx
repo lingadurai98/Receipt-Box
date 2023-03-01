@@ -46,11 +46,8 @@ const Signup = () => {
     else {
       setIsError(false)
       setemailerror('')
+      console.log('else')
     }
-
-
-
-
 
 
     //password
