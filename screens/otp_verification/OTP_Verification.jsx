@@ -35,7 +35,7 @@ function OTP_Verification() {
     if (resend === false) {
       if (timer === 0) {
         console.log(resend);
-        // setResend(true);
+        setResend(true);
       } else {
         interval = setInterval(() => {
           setTimer((timer) => timer - 1);
@@ -82,14 +82,7 @@ function OTP_Verification() {
             <Text style={styles.resend__button__text}>Resend OTP</Text>
           </Pressable>
         ) : (
-          <CountDown
-            until={timer}
-            size={15}
-            // onFinish={() => setResend(true)}
-            digitStyle={{ backgroundColor: "#FFF" }}
-            digitTxtStyle={{ color: "#1CC625" }}
-            timeToShow={["S"]}
-          />
+          <Text style={styles.timer__text}>{timer}</Text>
         )}
       </View>
     </View>
@@ -119,6 +112,9 @@ const styles = StyleSheet.create({
   resend__button__text: {
     fontSize: 18,
     fontWeight: "600",
+    color: "#0626de",
+  },
+  timer__text: {
     color: "#0626de",
   },
 });
