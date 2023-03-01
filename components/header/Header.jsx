@@ -2,7 +2,6 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import Logo from "../../assets/images/logo.png";
 
 const Header = (props) => {
-  console.log(props);
   return (
     <View style={[styles.headerContainer]}>
       <Image style={styles.logo} source={Logo} />

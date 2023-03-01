@@ -1,14 +1,17 @@
-
 import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import CreateAddress from "./screens/createAddress/CreateAddress";
 import Signup from "./screens/signup/Signup";
+import Home from "./screens/home/Home";
 
 export default function App() {
   return (
     <LinearGradient style={styles.container} colors={["#d2f5eb", "#026838"]}>
+
       {/* <CreateAddress /> */}
-      <Signup />
+       {/* <Signup /> */}
+       <Home />
+
     </LinearGradient>
   );
 }
@@ -19,7 +22,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffff",
     justifyContent: "center",
     paddingTop: 24,
-    paddingHorizontal: 20,
-    paddingBottom: 20,
   },
 });
