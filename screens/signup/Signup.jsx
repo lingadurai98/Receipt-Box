@@ -248,8 +248,6 @@ const styles = StyleSheet.create({
     right: '90%',
     zIndex: 1,
     top: 15,
-
-
   },
   eyeIconone: {
     position: "absolute",

@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import CreateAddress from "./screens/createAddress/CreateAddress";
 import Signup from "./screens/signup/Signup";
 import Home from "./screens/home/Home";
+import LoginScreen from "./screens/login/Login";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       {/* <CreateAddress /> */}
        {/* <Signup /> */}
        <Home />
+     
 
     </LinearGradient>
   );
