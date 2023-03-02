@@ -23,13 +23,14 @@ const Signup = ({ navigation }) => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
-  const [isError, setIsError] = useState(false);
+  const [Error, setError] = useState(false);
   const [emailerror, setemailerror] = useState("");
   const [pwerror, setpwerror] = useState("");
   const [cnfpwerror, setcnfpwerror] = useState("");
   const [mailvalidate, setmailvalidate] = useState(false);
   const [passwordvalidate, setpasswordvalidate] = useState(false);
   const [confirmpasswordvalidate, setconfirmpasswordvalidate] = useState(false);
+  const [trigger, settrigger] = useState(false)
 
   const termsHandler = () => {
     Alert.alert("Terms & Conditions", termsAndConditions, [
@@ -47,35 +48,38 @@ const Signup = ({ navigation }) => {
     navigation.navigate("login");
   };
 
-  const emailRegex =
-    /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
-
-  // useEffect(() => {
-  //   if (
-  //     mailvalidate === true &&
-  //     passwordvalidate === true &&
-  //     confirmpasswordvalidate === true
-  //   ) {
-  //     navigation.navigate("otpPage");
-  //   } else {
-  //     return;
-  //   }
-  // }, [pwerror, cnfpwerror, emailerror]);
+ 
+  useEffect(() => {
+    if (
+      mailvalidate === true &&
+      passwordvalidate === true &&
+      confirmpasswordvalidate === true
+    ) {
+      navigation.navigate("otpPage");
+      settrigger(false)
+    } else {
+      return;
+    }
+  }, [pwerror, cnfpwerror, emailerror, trigger]);
 
   const handleSignup = () => {
-    console.log(isError);
-    if (!isError) {
-      navigation.navigate("otpPage");
-    }
+    settrigger(true)
+    console.log(cnfpwerror)
+
+    // if (!isError) {
+    //   navigation.navigate("otpPage");
+    // }
+
+    const emailRegex =
+    /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
     var testemail = emailRegex.test(email);
 
     if (testemail == false || email == "") {
-      setIsError(true);
-
+      setError(true);
       setemailerror("Invalid Email");
       setmailvalidate(false);
     } else {
-      setIsError(false);
+      // setError(false);
       setemailerror("");
       setmailvalidate(true);
     }
@@ -86,44 +90,37 @@ const Signup = ({ navigation }) => {
     var testpassword = passwordRegex.test(password);
 
     if (password == "" || password.length < 8) {
-      setIsError(true);
+      setError(true);
       setpwerror("Sorry, the password must atleast be 8 characters");
       setpasswordvalidate(false);
     } else if (testpassword == false) {
-      setIsError(true);
+      setError(true);
       setpwerror(
         "Sorry, the password must contain atleast one alphabet, one digit and a special character."
       );
       setpasswordvalidate(false);
     } else {
-      setIsError(false);
+      // setError(false);
       setpwerror("");
       setpasswordvalidate(true);
     }
 
     //cnfrmpw
-    var testconfirmpassword = passwordRegex.test(confirmpassword);
 
-    // if (confirmpassword == "" || confirmpassword.length < 8) {
-    //   setIsError(true);
-    //   setcnfpwerror("Sorry, the password must atleast be 8 characters");
-    //   setconfirmpasswordvalidate(false)
-    // } else if (testconfirmpassword == false) {
-    //   setIsError(true);
-    //   setcnfpwerror(
-    //     "Sorry, the password must contain atleast one alphabet, one digit and a special character."
-    //   );
-    //   setconfirmpasswordvalidate(false)
-    // }
-    if (confirmpassword != password) {
-      setIsError(true);
+
+
+    if (confirmpassword != password || confirmpassword=="") {
+      setError(true);
       setcnfpwerror("Passwords do not match");
       setconfirmpasswordvalidate(false);
-    } else {
-      setIsError(false);
+    }
+    else{
+      // setError(false);
       setcnfpwerror("");
       setconfirmpasswordvalidate(true);
     }
+
+   
   };
 
   return (
@@ -149,13 +146,9 @@ const Signup = ({ navigation }) => {
             placeholder="Enter Your Email Address"
             style={styles.input}
             onChangeText={(text) => {
-              // emailtest = emailRegex.test(text)
-              //   {emailtest ? setmailTestState(emailtest) : setmailTestState(emailtest)}
               setemail(text);
-              // console.log(mailTestState)
             }}
-            isError={isError}
-            // errMsg={errMsg.email}
+            isError={Error}
             errMsg={emailerror}
           />
         </View>
@@ -180,8 +173,7 @@ const Signup = ({ navigation }) => {
               setpassword(text);
             }}
             style={styles.input}
-            isError={isError}
-            // errMsg={errMsg.password}
+            isError={Error}
             errMsg={pwerror}
           />
         </View>
@@ -203,7 +195,7 @@ const Signup = ({ navigation }) => {
             secureTextEntry={secureTextEntryTwo}
             onChangeText={(text) => setconfirmpassword(text)}
             style={styles.input}
-            isError={isError}
+            isError={Error}
             // errMsg={errMsg.confirmpassword}
             errMsg={cnfpwerror}
           />
@@ -273,7 +265,7 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   inputContainerTwo: {
-    marginTop: 8,
+    marginTop: 10,
     padding: 15,
     height: 60,
     justifyContent: "center",
@@ -294,7 +286,7 @@ const styles = StyleSheet.create({
     top: 15,
   },
   inputContainerThree: {
-    marginTop: 8,
+    marginTop: 15,
     // marginBottom: 20,
     padding: 15,
     height: 60,
@@ -304,6 +296,7 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse",
   },
   termsContainer: {
+    marginTop : 10,
     padding: 10,
     flexDirection: "row",
   },
