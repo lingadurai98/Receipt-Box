@@ -4,6 +4,7 @@ import Button from "../../components/button/Botton";
 import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import {
+  background__Color,
   createEmailAddressText,
   dummyEmail,
   dummyEmailList,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
   root__container: {
     flex: 1,
     paddingTop: 50,
-    backgroundColor: "#d6f9d2",
+    backgroundColor: background__Color,
   },
   addressContainer: {
     marginTop: 50,

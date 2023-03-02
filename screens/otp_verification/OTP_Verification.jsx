@@ -7,7 +7,11 @@ import {
   Alert,
 } from "react-native";
 import Header from "../../components/header/Header";
-import { otpVerificationText } from "../../constants/Constant";
+import {
+  background__Color,
+  input__Text__Color,
+  otpVerificationText,
+} from "../../constants/Constant";
 import OtpInputs from "react-native-otp-inputs";
 import { useEffect, useState } from "react";
 import Button from "../../components/button/Botton";
@@ -61,13 +65,13 @@ function OTP_Verification({ navigation }) {
           numberOfInputs={6}
           keyboardType="default"
           inputStyles={{
-            borderColor: "#00000d",
+            borderColor: "#ddffdaff",
             borderBottomWidth: 1,
             padding: 5,
             fontSize: 20,
             textAlign: "center",
             height: 35,
-            color: "#074e02",
+            color: "#ddffdaff",
           }}
           inputContainerStyles={{
             marginVertical: 20,
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     paddingTop: 100,
-    backgroundColor: "#d6f9d2",
+    backgroundColor: background__Color,
   },
   otpContainer: {
     justifyContent: "center",
@@ -119,7 +123,10 @@ const styles = StyleSheet.create({
     color: "#0626de",
   },
   timer__text: {
-    color: "#0626de",
+    color: "#ddffdaff",
+  },
+  resend__text: {
+    color: "#ddffdaff",
   },
 });
 export default OTP_Verification;

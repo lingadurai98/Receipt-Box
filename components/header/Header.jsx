@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import Logo from "../../assets/images/logo.png";
 
-import * as FontFamily from "expo-font";
 import { font__Color, heading__Color } from "../../constants/Constant";
 const Header = (props) => {
-  FontFamily.loadAsync({
-    "custom-font": require("../../assets/fonts/Poppins-Black.ttf"),
-  });
+  // FontFamily.loadAsync({
+  //   "custom-font": require("../../assets/fonts/Poppins-Black.ttf"),
+  // });
 
   // // Fonts
   // const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -31,9 +29,7 @@ const Header = (props) => {
     <View style={[styles.headerContainer]}>
       <Image style={styles.logo} source={Logo} />
       <Text style={styles.heading}>{props.heading}</Text>
-      <Text style={[styles.text, { color: props.textStyle }]}>
-        {props.text}
-      </Text>
+      <Text style={[styles.text]}>{props.text}</Text>
     </View>
   );
 };

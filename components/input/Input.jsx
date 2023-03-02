@@ -19,10 +19,8 @@ const Input = ({
         ]}
       >
         <TextInput
-          style={[styles.input, { color: textClr }]}
-          placeholderTextColor={
-            placeholderColor ? placeholderColor : "#a9dda561"
-          }
+          style={[styles.input]}
+          placeholderTextColor={(placeholderColor = "#a9dda561")}
           {...restProps}
         />
       </View>

@@ -13,6 +13,7 @@ import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import Checkbox from "expo-checkbox";
 import { Entypo } from "@expo/vector-icons";
+import { background__Color, button__Color } from "../../constants/Constant";
 
 const Signup = ({ navigation }) => {
   const termsAndConditions =
@@ -30,7 +31,7 @@ const Signup = ({ navigation }) => {
   const [mailvalidate, setmailvalidate] = useState(false);
   const [passwordvalidate, setpasswordvalidate] = useState(false);
   const [confirmpasswordvalidate, setconfirmpasswordvalidate] = useState(false);
-  const [trigger, settrigger] = useState(false)
+  const [trigger, settrigger] = useState(false);
 
   const termsHandler = () => {
     Alert.alert("Terms & Conditions", termsAndConditions, [
@@ -48,7 +49,6 @@ const Signup = ({ navigation }) => {
     navigation.navigate("login");
   };
 
- 
   useEffect(() => {
     if (
       mailvalidate === true &&
@@ -56,22 +56,22 @@ const Signup = ({ navigation }) => {
       confirmpasswordvalidate === true
     ) {
       navigation.navigate("otpPage");
-      settrigger(false)
+      settrigger(false);
     } else {
       return;
     }
   }, [pwerror, cnfpwerror, emailerror, trigger]);
 
   const handleSignup = () => {
-    settrigger(true)
-    console.log(cnfpwerror)
+    settrigger(true);
+    console.log(cnfpwerror);
 
     // if (!isError) {
     //   navigation.navigate("otpPage");
     // }
 
     const emailRegex =
-    /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
+      /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
     var testemail = emailRegex.test(email);
 
     if (testemail == false || email == "") {
@@ -107,20 +107,15 @@ const Signup = ({ navigation }) => {
 
     //cnfrmpw
 
-
-
-    if (confirmpassword != password || confirmpassword=="") {
+    if (confirmpassword != password || confirmpassword == "") {
       setError(true);
       setcnfpwerror("Passwords do not match");
       setconfirmpasswordvalidate(false);
-    }
-    else{
+    } else {
       // setError(false);
       setcnfpwerror("");
       setconfirmpasswordvalidate(true);
     }
-
-   
   };
 
   return (
@@ -207,7 +202,7 @@ const Signup = ({ navigation }) => {
             value={toggleCheckBox}
             onValueChange={(newValue) => setToggleCheckBox(newValue)}
             style={styles.checkbox}
-            color={toggleCheckBox ? "#5f0230" : "#000000"}
+            color={button__Color}
           />
           <Text style={styles.label}>
             Check our{" "}
@@ -226,7 +221,9 @@ const Signup = ({ navigation }) => {
           />
         </View>
         <View style={styles.loginBtnContainer}>
-          <Text>Do you already have an account?</Text>
+          <Text style={{ color: button__Color }}>
+            Do you already have an account?
+          </Text>
           <Button
             children="Proceed To Login"
             style={styles.button}
@@ -242,7 +239,8 @@ const styles = StyleSheet.create({
   SignupContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    flex: 1,
+    backgroundColor: background__Color,
   },
   inputContainerOne: {
     padding: 15,
@@ -296,19 +294,20 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse",
   },
   termsContainer: {
-    marginTop : 10,
+    marginTop: 10,
     padding: 10,
     flexDirection: "row",
   },
   checkbox: {
     alignSelf: "center",
-    color: "black",
+    color: button__Color,
   },
   label: {
     margin: 8,
+    color: button__Color,
   },
   termsText: {
-    color: "blue",
+    color: button__Color,
   },
   loginBtnContainer: {
     marginTop: 15,
