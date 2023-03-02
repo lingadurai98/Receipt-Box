@@ -1,4 +1,4 @@
-export const dummyEmail = ["detrans@receiptbox.com"];
+export const dummyEmail = ["detrans"];
 
 // Create Email Address
 export const createEmailAddressText = {

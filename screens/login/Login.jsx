@@ -62,15 +62,15 @@ const LoginScreen = ({ navigation }) => {
         />
       </View>
       <Input
-        style={[styles.input, emailError && styles.errorBorder]}
+        style={[styles.input]}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
         value={email}
+        isError={emailError === "" ? false : true}
+        errMsg={emailError}
       />
-      {emailError ? (
-        <Text style={styles.errorMessage}>{emailError}</Text>
-      ) : null}
-      <SafeAreaView style={styles.passwordContainer}>
+
+      <SafeAreaView style={[styles.passwordContainer]}>
         <SafeAreaView>
           <TouchableOpacity
             style={styles.eyeIconContainer}
@@ -85,16 +85,15 @@ const LoginScreen = ({ navigation }) => {
         </SafeAreaView>
 
         <Input
-          style={[styles.passwordInput, passwordError && styles.errorBorder]}
+          style={styles.passwordInput}
           placeholder="Password"
           secureTextEntry={!showPassword}
           onChangeText={(text) => setPassword(text)}
           value={password}
+          isError={passwordError}
+          errMsg={passwordError}
         />
       </SafeAreaView>
-      {passwordError ? (
-        <Text style={styles.errorMessage}>{passwordError}</Text>
-      ) : null}
 
       <Button onPress={handleLogin} style={styles.button}>
         Submit
@@ -162,20 +161,11 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     width: 300,
-    borderColor: "#0D0D0D",
-    borderWidth: 2,
-    borderRadius: 10,
-    marginBottom: 20,
-    paddingHorizontal: 20,
-    fontSize: 18,
-    color: "#0D0D0D",
-    backgroundColor: "#FFFFFF",
   },
   passwordInput: {
     height: 50,
     width: 300,
-    borderColor: "#0D0D0D",
-    borderWidth: 2,
+
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 20,
@@ -197,6 +187,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 20,
+
     fontSize: 18,
     color: "#0D0D0D", // dark green
     // backgroundColor: "#FFFFFF", // white

@@ -1,4 +1,3 @@
-
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 const Input = ({ style, isError, errMsg, ...restProps }) => {
