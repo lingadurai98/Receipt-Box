@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import {
   SafeAreaView,
   Text,
-  TextInput,
-  Button,
   StyleSheet,
   TouchableOpacity,
   Image,
+  View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Botton";
+import logo from "../../assets/images/logo.png";
+import Header from "../../components/header/Header";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -22,42 +25,41 @@ const LoginScreen = () => {
 
     if (email.trim() === "") {
       setEmailError("Please enter your email address");
-      return;
+    } else if (!regex.test(email)) {
+      setEmailError("Please enter a valid email");
+    } else if (!registeredEmails.includes(email)) {
+      setEmailError("Email not registered");
+    } else {
+      setEmailError("");
     }
-
-    if (!regex.test(email)) {
-      setEmailError("Please enter a valid email ");
-      return;
-    }
-
-    setEmailError("");
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+    var passwordtest = passwordRegex.test(password);
 
     if (password.trim() === "") {
       setPasswordError("Please enter your password");
-      return;
+    } else if (!passwordtest) {
+      setPasswordError(
+        "Please enter a valid password (minimum 8 characters, at least one letter, one number and one special character)"
+      );
+    } else {
+      setPasswordError("");
     }
-
-    setPasswordError("");
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <SafeAreaView style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          source={{
-            width: 150,
-            height: 150,
-
-            uri: "https://via.placeholder.com/150",
-          }}
+      <View style={styles.logoContainer}>
+        <Header
+          heading="Login"
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut 
+        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+        ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+        pariatur"
         />
-        <Text style={styles.logoText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </Text>
-      </SafeAreaView>
-      <TextInput
+      </View>
+      <Input
         style={[styles.input, emailError && styles.errorBorder]}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
@@ -67,28 +69,34 @@ const LoginScreen = () => {
         <Text style={styles.errorMessage}>{emailError}</Text>
       ) : null}
       <SafeAreaView style={styles.passwordContainer}>
-        <TextInput
+        <SafeAreaView>
+          <TouchableOpacity
+            style={styles.eyeIconContainer}
+            onPress={() => setShowPassword(!showPassword)}
+          >
+            <Ionicons
+              name={showPassword ? "eye-off" : "eye"}
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        </SafeAreaView>
+
+        <Input
           style={[styles.passwordInput, passwordError && styles.errorBorder]}
           placeholder="Password"
           secureTextEntry={!showPassword}
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <TouchableOpacity
-          style={styles.eyeIconContainer}
-          onPress={() => setShowPassword(!showPassword)}
-        >
-          <Ionicons
-            name={showPassword ? "eye-off" : "eye"}
-            size={24}
-            color="black"
-          />
-        </TouchableOpacity>
       </SafeAreaView>
       {passwordError ? (
         <Text style={styles.errorMessage}>{passwordError}</Text>
       ) : null}
-      <Button title="Log in" onPress={handleLogin} />
+
+      <Button onPress={handleLogin} style={styles.button}>
+        Submit
+      </Button>
       <SafeAreaView style={styles.forgotPasswordContainer}>
         <TouchableOpacity onPress={() => {}}>
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
@@ -110,7 +118,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
-    backgroundColor: "#E8F8F5",
+    // backgroundColor: "#E8F8F5",
     paddingHorizontal: 20,
     marginBottom: 40,
     marginTop: 50,
@@ -134,14 +142,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoContainer: {
-    flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    marginTop: 30,
+    marginBottom: 50,
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   logoText: {
     marginTop: 30,
@@ -162,40 +169,61 @@ const styles = StyleSheet.create({
     color: "#0D0D0D",
     backgroundColor: "#FFFFFF",
   },
-  passwordContainer: {
+  passwordInput: {
+    height: 50,
     width: 300,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderColor: "#0D0D0D", // dark green
+    borderColor: "#0D0D0D",
     borderWidth: 2,
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 20,
     fontSize: 18,
+    color: "#0D0D0D",
+    backgroundColor: "#FFFFFF",
+    position: "relative",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  passwordContainer: {
+    // width: 300,
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    alignItems: "center",
+    // borderColor: "#0D0D0D", // dark green
+    // borderWidth: 2,
+    borderRadius: 10,
+    marginBottom: 20,
+    paddingHorizontal: 20,
+    fontSize: 18,
     color: "#0D0D0D", // dark green
-    backgroundColor: "#FFFFFF", // white
+    // backgroundColor: "#FFFFFF", // white
   },
   eyeIconContainer: {
     padding: 10,
+    position: "absolute",
+    right: "90%",
+    zIndex: 1,
+    // top: 15,
+    bottom: -15,
   },
   errorBorder: {
     borderColor: "#FF0000",
   },
   errorMessage: {
     color: "#FF0000",
-    marginBottom: 60,
+    marginBottom: 20,
     paddingHorizontal: 20,
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#0D0D0D",
+    // backgroundColor: "#0D0D0D",
     width: 300,
-    height: 50,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 20,
+    // height: 50,
+    // borderRadius: 10,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // marginTop: 20,
   },
   buttonText: {
     color: "#FFFFFF",
