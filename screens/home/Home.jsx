@@ -2,7 +2,12 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import logo from "../../assets/images/logo.png";
 import QRCode from "react-native-qrcode-svg";
-import { button__Color, input__Text__Color } from "../../constants/Constant";
+import {
+  background__Color,
+  button__Color,
+  heading__Color,
+  input__Text__Color,
+} from "../../constants/Constant";
 
 // Qr code reference
 // https://aboutreact.com/generation-of-qr-code-in-react-native/
@@ -29,7 +34,7 @@ const Home = () => {
             //Color of the QR Code (Optional)
             color="black"
             //Background Color of the QR Code (Optional)
-            backgroundColor={input__Text__Color}
+            backgroundColor={background__Color}
             // //Logo of in the center of QR Code (Optional)
             // logo={{
             //   url: "https://raw.githubusercontent.com/AboutReact/sampleresource/master/logosmalltransparen.png",
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flex: 1,
     paddingTop: 30,
-    backgroundColor: input__Text__Color,
+    backgroundColor: background__Color,
   },
   body__container: {
     justifyContent: "center",
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: button__Color,
+    backgroundColor: heading__Color,
     paddingVertical: 15,
     paddingHorizontal: 20,
   },
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
   menu__text: {
     textAlign: "center",
     fontSize: 18,
-    color: input__Text__Color,
+    color: background__Color,
   },
 });
 

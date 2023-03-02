@@ -20,7 +20,7 @@ const Input = ({
       >
         <TextInput
           style={[styles.input]}
-          placeholderTextColor={(placeholderColor = "#a9dda561")}
+          placeholderTextColor={(placeholderColor = "#07600053")}
           {...restProps}
         />
       </View>
@@ -34,7 +34,7 @@ export default Input;
 const styles = StyleSheet.create({
   input__contianer: {
     borderBottomWidth: 1,
-    backgroundColor: "#ffffff1c",
+    backgroundColor: "#8ec8bc",
     borderRadius: 10,
   },
   input: {

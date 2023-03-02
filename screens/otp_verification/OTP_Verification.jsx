@@ -9,6 +9,8 @@ import {
 import Header from "../../components/header/Header";
 import {
   background__Color,
+  button__Color,
+  font__Color,
   input__Text__Color,
   otpVerificationText,
 } from "../../constants/Constant";
@@ -65,13 +67,13 @@ function OTP_Verification({ navigation }) {
           numberOfInputs={6}
           keyboardType="default"
           inputStyles={{
-            borderColor: "#ddffdaff",
+            borderColor: font__Color,
             borderBottomWidth: 1,
             padding: 5,
             fontSize: 20,
             textAlign: "center",
             height: 35,
-            color: "#ddffdaff",
+            color: font__Color,
           }}
           inputContainerStyles={{
             marginVertical: 20,
@@ -120,13 +122,13 @@ const styles = StyleSheet.create({
   resend__button__text: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#0626de",
+    color: button__Color,
   },
   timer__text: {
-    color: "#ddffdaff",
+    color: button__Color,
   },
   resend__text: {
-    color: "#ddffdaff",
+    color: font__Color,
   },
 });
 export default OTP_Verification;
