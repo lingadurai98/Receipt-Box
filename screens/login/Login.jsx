@@ -1,16 +1,14 @@
-import { View } from "react-native";
 import React, { useState } from "react";
-import Button from "../../components/button/Botton";
 import {
   SafeAreaView,
   Text,
   TextInput,
+  Button,
   StyleSheet,
   TouchableOpacity,
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Header from "../../components/header/Header";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +19,6 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com|us)$/;
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
 
     if (email.trim() === "") {
       setEmailError("Please enter your email address");
@@ -32,10 +29,7 @@ const LoginScreen = () => {
       setEmailError("Please enter a valid email ");
       return;
     }
-    if (!registeredEmails.includes(email)) {
-      setEmailError("Email not registered");
-      return;
-    }
+
     setEmailError("");
 
     if (password.trim() === "") {
@@ -43,22 +37,26 @@ const LoginScreen = () => {
       return;
     }
 
-    if (!passwordRegex.test(password)) {
-      setPasswordError(
-        "Please enter a valid password (minimum 8 characters, at least one letter, one number and one special character)"
-      );
-      return;
-    }
     setPasswordError("");
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header
-        heading="Log-In"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor nunc sit amet dolor venenatis, at sagittis mi porttitor. Vestibulum sit amet nulla a enim."
-      />
+      <SafeAreaView style={styles.logoContainer}>
+        <Image
+          style={styles.logo}
+          source={{
+            width: 150,
+            height: 150,
 
+            uri: "https://via.placeholder.com/150",
+          }}
+        />
+        <Text style={styles.logoText}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
+      </SafeAreaView>
       <TextInput
         style={[styles.input, emailError && styles.errorBorder]}
         placeholder="Email"
@@ -90,8 +88,7 @@ const LoginScreen = () => {
       {passwordError ? (
         <Text style={styles.errorMessage}>{passwordError}</Text>
       ) : null}
-      <Button heading="Log-In" children="Log in" onPress={handleLogin} />
-      {/* <Button title="Log in" onPress={handleLogin} /> */}
+      <Button title="Log in" onPress={handleLogin} />
       <SafeAreaView style={styles.forgotPasswordContainer}>
         <TouchableOpacity onPress={() => {}}>
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
@@ -136,7 +133,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
+  logoContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop: 30,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+  },
+  logoText: {
+    marginTop: 30,
+    textAlign: "center",
+    fontSize: 16,
+    color: "#0D0D0D",
+    paddingHorizontal: 20,
+  },
   input: {
     height: 50,
     width: 300,
@@ -148,7 +161,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#0D0D0D",
     backgroundColor: "#FFFFFF",
-    marginTop: 50,
   },
   passwordContainer: {
     width: 300,
