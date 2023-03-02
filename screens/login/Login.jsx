@@ -13,7 +13,7 @@ import Button from "../../components/button/Botton";
 import logo from "../../assets/images/logo.png";
 import Header from "../../components/header/Header";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -27,8 +27,6 @@ const LoginScreen = () => {
       setEmailError("Please enter your email address");
     } else if (!regex.test(email)) {
       setEmailError("Please enter a valid email");
-    } else if (!registeredEmails.includes(email)) {
-      setEmailError("Email not registered");
     } else {
       setEmailError("");
     }
@@ -43,6 +41,10 @@ const LoginScreen = () => {
       );
     } else {
       setPasswordError("");
+    }
+
+    if (regex.test(email) && passwordtest) {
+      navigation.navigate("createEmail");
     }
   };
 
@@ -104,9 +106,9 @@ const LoginScreen = () => {
       </SafeAreaView>
       <SafeAreaView style={styles.signupTextCont}>
         <Text style={styles.signupText}>Don't have an account yet?</Text>
-        <TouchableOpacity onPress={() => {}}>
-          <Text style={styles.signupButton}>Proceed to Signup</Text>
-        </TouchableOpacity>
+        <Button onPress={() => navigation.navigate("signup")}>
+          Proceed to Signup{" "}
+        </Button>
       </SafeAreaView>
     </SafeAreaView>
   );

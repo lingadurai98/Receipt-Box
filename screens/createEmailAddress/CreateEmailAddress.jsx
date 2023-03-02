@@ -9,7 +9,7 @@ import {
   dummyEmailList,
 } from "../../constants/Constant";
 
-function CreateEmailAddress() {
+function CreateEmailAddress({ navigation }) {
   const [data, setData] = useState({
     input: "",
     showMsg: false,
@@ -26,6 +26,7 @@ function CreateEmailAddress() {
     } else {
       setData((prev) => ({ ...prev, showMsg: true, isError: false }));
       console.log(false);
+      navigation.navigate("home");
     }
   }
   return (
@@ -46,7 +47,7 @@ function CreateEmailAddress() {
         <View style={styles.summmary__container}>
           {!data.isError && data.showMsg && (
             <Text style={styles.summary__text}>
-              Hey, Congratulations 
+              Hey, Congratulations
               <Text style={styles.email}>{data.input}</Text>
               is available and has been created.
             </Text>

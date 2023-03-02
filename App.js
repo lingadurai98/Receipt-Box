@@ -4,12 +4,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import Home from "./screens/home/Home";
 import LoginScreen from "./screens/login/Login";
 import tree from "./assets/images/tree.png";
+import MyStack from "./navigation/MyStack";
 
 export default function App() {
   return (
     <LinearGradient style={styles.container} colors={["#d2f5eb", "#3d956c"]}>
       <Image source={tree} style={styles.image}></Image>
-      <LoginScreen />
+      <MyStack />
     </LinearGradient>
   );
 }
