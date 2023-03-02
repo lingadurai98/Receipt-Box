@@ -79,7 +79,7 @@ const Signup = ({ navigation }) => {
       setemailerror("Invalid Email");
       setmailvalidate(false);
     } else {
-      // setError(false);
+      //  setError(false);
       setemailerror("");
       setmailvalidate(true);
     }
@@ -148,7 +148,12 @@ const Signup = ({ navigation }) => {
           />
         </View>
 
-        <View style={styles.inputContainerTwo}>
+        <View
+          style={[
+            styles.inputContainerTwo,
+            passwordvalidate ? styles.transparentborder : styles.redborder,
+          ]}
+        >
           <View style={styles.eyeIcon}>
             <TouchableOpacity
               onPress={() => setsecureTextEntry((prevvalue) => !prevvalue)}
@@ -189,7 +194,10 @@ const Signup = ({ navigation }) => {
             placeholder="Confirm Password"
             secureTextEntry={secureTextEntryTwo}
             onChangeText={(text) => setconfirmpassword(text)}
-            style={styles.input}
+            style={[
+              styles.input,
+              { borderBottomColor: cnfpwerror ? "red" : "transparent" },
+            ]}
             isError={Error}
             // errMsg={errMsg.confirmpassword}
             errMsg={cnfpwerror}
@@ -270,6 +278,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     flexDirection: "row-reverse",
+    // borderBottomColor: passwordvalidate ? "transparent" : "red",
+  },
+  redborder: {
+    borderBottomColor: "red",
+  },
+  transparentborder: {
+    borderBottomColor: "transparent",
   },
   eyeIcon: {
     position: "absolute",
