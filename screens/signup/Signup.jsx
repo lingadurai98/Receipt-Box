@@ -48,7 +48,7 @@ const Signup = ({ navigation }) => {
     navigation.navigate("login");
   };
 
- 
+
   useEffect(() => {
     if (
       mailvalidate === true &&
@@ -71,7 +71,7 @@ const Signup = ({ navigation }) => {
     // }
 
     const emailRegex =
-    /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
+      /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
     var testemail = emailRegex.test(email);
 
     if (testemail == false || email == "") {
@@ -79,7 +79,7 @@ const Signup = ({ navigation }) => {
       setemailerror("Invalid Email");
       setmailvalidate(false);
     } else {
-      // setError(false);
+      //  setError(false);
       setemailerror("");
       setmailvalidate(true);
     }
@@ -109,18 +109,18 @@ const Signup = ({ navigation }) => {
 
 
 
-    if (confirmpassword != password || confirmpassword=="") {
+    if (confirmpassword != password || confirmpassword == "") {
       setError(true);
       setcnfpwerror("Passwords do not match");
       setconfirmpasswordvalidate(false);
     }
-    else{
+    else {
       // setError(false);
       setcnfpwerror("");
       setconfirmpasswordvalidate(true);
     }
 
-   
+
   };
 
   return (
@@ -153,7 +153,7 @@ const Signup = ({ navigation }) => {
           />
         </View>
 
-        <View style={styles.inputContainerTwo}>
+        <View style={ [styles.inputContainerTwo,  passwordvalidate ?styles.transparentborder  : styles.redborder]}>
           <View style={styles.eyeIcon}>
             <TouchableOpacity
               onPress={() => setsecureTextEntry((prevvalue) => !prevvalue)}
@@ -194,7 +194,7 @@ const Signup = ({ navigation }) => {
             placeholder="Confirm Password"
             secureTextEntry={secureTextEntryTwo}
             onChangeText={(text) => setconfirmpassword(text)}
-            style={styles.input}
+            style={[styles.input, { borderBottomColor: cnfpwerror ? "red" : "transparent" }]}
             isError={Error}
             // errMsg={errMsg.confirmpassword}
             errMsg={cnfpwerror}
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   input: {
-    borderColor: "transparent",
+     borderColor: "transparent",
     paddingHorizontal: 30,
     paddingVertical: 3,
     fontSize: 14,
@@ -272,6 +272,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     flexDirection: "row-reverse",
+    // borderBottomColor: passwordvalidate ? "transparent" : "red",
+  },
+  redborder:{
+        borderBottomColor :'red'
+  },
+  transparentborder:{
+    borderBottomColor: "transparent",
   },
   eyeIcon: {
     position: "absolute",
@@ -296,7 +303,7 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse",
   },
   termsContainer: {
-    marginTop : 10,
+    marginTop: 10,
     padding: 10,
     flexDirection: "row",
   },
