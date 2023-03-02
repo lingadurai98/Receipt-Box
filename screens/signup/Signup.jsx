@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -27,6 +27,9 @@ const Signup = ({ navigation }) => {
   const [emailerror, setemailerror] = useState("");
   const [pwerror, setpwerror] = useState("");
   const [cnfpwerror, setcnfpwerror] = useState("");
+  const [mailvalidate, setmailvalidate] = useState(false)
+  const [passwordvalidate, setpasswordvalidate] = useState(false)
+  const [confirmpasswordvalidate, setconfirmpasswordvalidate] = useState(false)
 
   const termsHandler = () => {
     Alert.alert("Terms & Conditions", termsAndConditions, [
@@ -47,16 +50,30 @@ const Signup = ({ navigation }) => {
   const emailRegex =
     /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
 
+  useEffect(() => {
+    if (mailvalidate === true && passwordvalidate === true && confirmpasswordvalidate === true) {
+      navigation.navigate("login")
+    }
+    else{
+      return
+    }
+   
+  }, [pwerror, cnfpwerror, emailerror])
+
   const handleSignup = () => {
+    console.log(isError)
     var testemail = emailRegex.test(email);
 
     if (testemail == false || email == "") {
       setIsError(true);
+      
       setemailerror("Invalid Email");
+      setmailvalidate(false)
     } else {
       setIsError(false);
       setemailerror("");
       console.log("else");
+      setmailvalidate(true)
     }
 
     //password
@@ -64,38 +81,48 @@ const Signup = ({ navigation }) => {
       /(?=[a-z]+[\W]+[0-9]+)|([\W]+[a-z]+[0-9]+)|([\W]+[0-9]+[a-z]+)|([a-z]+[0-9]+[\W]+)|([0-9]+[\W]+[a-z]+)|([0-9]+[a-z]+[\W]+)/gi;
     var testpassword = passwordRegex.test(password);
 
+
+
     if (password == "" || password.length < 8) {
       setIsError(true);
       setpwerror("Sorry, the password must atleast be 8 characters");
+      setpasswordvalidate(false)
     } else if (testpassword == false) {
       setIsError(true);
       setpwerror(
         "Sorry, the password must contain atleast one alphabet, one digit and a special character."
       );
+      setpasswordvalidate(false)
     } else {
       setIsError(false);
       setpwerror("");
+      setpasswordvalidate(true)
     }
 
     //cnfrmpw
     var testconfirmpassword = passwordRegex.test(confirmpassword);
 
-    if (confirmpassword == "" || confirmpassword.length < 8) {
-      setIsError(true);
-      setcnfpwerror("Sorry, the password must atleast be 8 characters");
-    } else if (testconfirmpassword == false) {
-      setIsError(true);
-      setcnfpwerror(
-        "Sorry, the password must contain atleast one alphabet, one digit and a special character."
-      );
-    } else if (confirmpassword != password) {
+    // if (confirmpassword == "" || confirmpassword.length < 8) {
+    //   setIsError(true);
+    //   setcnfpwerror("Sorry, the password must atleast be 8 characters");
+    //   setconfirmpasswordvalidate(false)
+    // } else if (testconfirmpassword == false) {
+    //   setIsError(true);
+    //   setcnfpwerror(
+    //     "Sorry, the password must contain atleast one alphabet, one digit and a special character."
+    //   );
+    //   setconfirmpasswordvalidate(false)
+    // } 
+     if (confirmpassword != password) {
       setIsError(true);
       setcnfpwerror("Passwords do not match");
+      setconfirmpasswordvalidate(false)
     } else {
       setIsError(false);
       setcnfpwerror("");
+      setconfirmpasswordvalidate(true)
     }
-    navigation.navigate("login");
+
   };
 
   return (
