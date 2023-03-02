@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CreateEmailAddress from "../screens/createEmailAddress/CreateEmailAddress";
 import Home from "../screens/home/Home";
 import LoginScreen from "../screens/login/Login";
+import OTP_Verification from "../screens/otp_verification/OTP_Verification";
 import Signup from "../screens/signup/Signup";
 
 const MyStack = () => {
@@ -20,6 +21,13 @@ const MyStack = () => {
           component={LoginScreen}
           options={{ headerShown: false }}
         />
+
+        <Stack.Screen
+          name="otpPage"
+          component={OTP_Verification}
+          options={{ headerShown: false }}
+        />
+
         <Stack.Screen
           name="createEmail"
           component={CreateEmailAddress}
