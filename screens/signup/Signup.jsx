@@ -161,7 +161,7 @@ const Signup = ({ navigation }) => {
               <Entypo
                 name={secureTextEntry ? "eye" : "eye-with-line"}
                 size={20}
-                color="black"
+                color="#0d7e05"
               />
             </TouchableOpacity>
           </View>
@@ -185,7 +185,7 @@ const Signup = ({ navigation }) => {
               <Entypo
                 name={secureTextEntryTwo ? "eye" : "eye-with-line"}
                 size={20}
-                color="black"
+                color="#0d7e05"
               />
             </TouchableOpacity>
           </View>
