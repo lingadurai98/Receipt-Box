@@ -18,3 +18,10 @@ export const otpVerificationText = {
   heading: "OTP Verification",
   text: "We have sent you an One time password to your registered email. Please enter the OTP below",
 };
+
+// Colors
+export const font__Color = "#a9dda5aa";
+export const input__Text__Color = "#ddffdaff";
+export const heading__Color = "#71db69";
+export const background__Color = "#011a02";
+export const button__Color = "#0d7e05";

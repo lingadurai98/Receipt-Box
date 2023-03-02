@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   Text,
@@ -12,13 +12,15 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Botton";
 import logo from "../../assets/images/logo.png";
 import Header from "../../components/header/Header";
-
+import { background__Color, font__Color } from "../../constants/Constant";
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  // handle login
 
   const handleLogin = () => {
     const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com|us)$/;
@@ -119,14 +121,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
-    // backgroundColor: "#E8F8F5",
+    backgroundColor: background__Color,
     paddingHorizontal: 20,
-    marginBottom: 40,
-    marginTop: 50,
-    borderBottomEndRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderTopEndRadius: 20,
-    borderTopLeftRadius: 20,
   },
   forgotPasswordContainer: {
     marginVertical: 10,
@@ -134,7 +130,9 @@ const styles = StyleSheet.create({
   },
   forgotPasswordText: {
     textDecorationLine: "underline",
+    color: font__Color,
   },
+  signupText: { color: font__Color },
   backgroundContainer: {
     flex: 1,
     width: null,
@@ -161,11 +159,11 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     width: 300,
+    marginBottom: 20,
   },
   passwordInput: {
     height: 50,
     width: 300,
-
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 20,

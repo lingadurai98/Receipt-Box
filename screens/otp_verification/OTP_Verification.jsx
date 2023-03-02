@@ -13,13 +13,15 @@ import { useEffect, useState } from "react";
 import Button from "../../components/button/Botton";
 import CountDown from "react-native-countdown-component";
 
-function OTP_Verification() {
+function OTP_Verification({ navigation }) {
   const [optText, setOtpText] = useState("");
   const [resend, setResend] = useState(true);
   const [timer, setTimer] = useState(0);
   // const [id, setId] = useState(null);
 
-  const submitHandler = () => {};
+  const submitHandler = () => {
+    navigation.navigate("login");
+  };
 
   const otpHandler = (otp) => {
     setOtpText(otp);
@@ -50,6 +52,7 @@ function OTP_Verification() {
       <Header
         heading={otpVerificationText.heading}
         text={otpVerificationText.text}
+        textStyle="#074e02"
       />
       <View style={styles.otpContainer}>
         <OtpInputs
@@ -64,7 +67,7 @@ function OTP_Verification() {
             fontSize: 20,
             textAlign: "center",
             height: 35,
-            color: "#e8f3e9",
+            color: "#074e02",
           }}
           inputContainerStyles={{
             marginVertical: 20,
@@ -93,6 +96,7 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     paddingTop: 100,
+    backgroundColor: "#d6f9d2",
   },
   otpContainer: {
     justifyContent: "center",

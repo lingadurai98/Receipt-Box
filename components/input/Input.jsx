@@ -1,6 +1,14 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import { font__Color, input__Text__Color } from "../../constants/Constant";
 
-const Input = ({ style, isError, errMsg, ...restProps }) => {
+const Input = ({
+  style,
+  isError,
+  errMsg,
+  placeholderColor,
+  textClr,
+  ...restProps
+}) => {
   return (
     <View>
       <View
@@ -10,7 +18,13 @@ const Input = ({ style, isError, errMsg, ...restProps }) => {
           { borderBottomColor: isError ? "red" : "transparent" },
         ]}
       >
-        <TextInput style={styles.input} {...restProps} />
+        <TextInput
+          style={[styles.input, { color: textClr }]}
+          placeholderTextColor={
+            placeholderColor ? placeholderColor : "#a9dda561"
+          }
+          {...restProps}
+        />
       </View>
       {isError && <Text style={styles.err__Text}>{errMsg}</Text>}
     </View>
@@ -30,7 +44,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 3,
     fontSize: 14,
-    color: "#000100",
+    color: input__Text__Color,
   },
   err__Text: {
     fontSize: 12,

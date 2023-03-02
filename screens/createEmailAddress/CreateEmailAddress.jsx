@@ -40,6 +40,8 @@ function CreateEmailAddress({ navigation }) {
           onChangeText={inputChangeHandler}
           style={styles.input}
           placeholder="Key in a name for your Email Address"
+          placeholderColor="#9edc9f"
+          textClr="green"
         />
         <Button style={styles.button} onPress={submitHandler}>
           Submit
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
   root__container: {
     flex: 1,
     paddingTop: 50,
+    backgroundColor: "#d6f9d2",
   },
   addressContainer: {
     marginTop: 50,
