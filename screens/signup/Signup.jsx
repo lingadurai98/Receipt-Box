@@ -50,20 +50,23 @@ const Signup = ({ navigation }) => {
   const emailRegex =
     /^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bcom$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bus$|^[a-zA-Z0-9\W]+[@]{1}[a-z]+[\.]\bca$/;
 
-  useEffect(() => {
-    if (
-      mailvalidate === true &&
-      passwordvalidate === true &&
-      confirmpasswordvalidate === true
-    ) {
-      navigation.navigate("otpPage");
-    } else {
-      return;
-    }
-  }, [pwerror, cnfpwerror, emailerror]);
+  // useEffect(() => {
+  //   if (
+  //     mailvalidate === true &&
+  //     passwordvalidate === true &&
+  //     confirmpasswordvalidate === true
+  //   ) {
+  //     navigation.navigate("otpPage");
+  //   } else {
+  //     return;
+  //   }
+  // }, [pwerror, cnfpwerror, emailerror]);
 
   const handleSignup = () => {
     console.log(isError);
+    if (!isError) {
+      navigation.navigate("otpPage");
+    }
     var testemail = emailRegex.test(email);
 
     if (testemail == false || email == "") {
@@ -74,7 +77,6 @@ const Signup = ({ navigation }) => {
     } else {
       setIsError(false);
       setemailerror("");
-      console.log("else");
       setmailvalidate(true);
     }
 
