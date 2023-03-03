@@ -6,14 +6,15 @@ import {
   View,
 } from "react-native";
 
-import tree from "./assets/images/tree.png";
 import MyStack from "./navigation/MyStack";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <MyStack />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        <MyStack />
+      </SafeAreaView>
+    </View>
   );
 }
 

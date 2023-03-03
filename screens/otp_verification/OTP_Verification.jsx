@@ -1,23 +1,14 @@
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  Alert,
-} from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import Header from "../../components/header/Header";
 import {
   background__Color,
   button__Color,
   font__Color,
-  input__Text__Color,
   otpVerificationText,
 } from "../../constants/Constant";
 import OtpInputs from "react-native-otp-inputs";
 import { useEffect, useState } from "react";
 import Button from "../../components/button/Botton";
-import CountDown from "react-native-countdown-component";
 
 function OTP_Verification({ navigation }) {
   const [optText, setOtpText] = useState("");
