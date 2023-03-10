@@ -24,7 +24,9 @@ const Input = ({
           {...restProps}
         />
       </View>
-      {isError && <Text style={styles.err__Text}>{errMsg}</Text>}
+      <View style={styles.err_container}>
+        {isError && <Text numberOfLines={4} lineBreakMode={"clip"}  style={styles.err__Text}>{errMsg}</Text>}
+      </View>
     </View>
   );
 };
@@ -48,5 +50,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "red",
     marginTop: 5,
+   flexWrap:'wrap'
   },
+  err_container:{
+    width : 300,
+     height: 50,
+  }
+ 
 });

@@ -12,6 +12,7 @@ const Button = (props) => {
         }
         onPress={props.onPress}
         android_ripple={{ color: "#0b6a04" }}
+        disabled={props.disabled}
       >
         <Text style={styles.buttonText}>{props.children}</Text>
       </Pressable>

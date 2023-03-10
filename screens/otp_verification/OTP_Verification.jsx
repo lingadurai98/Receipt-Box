@@ -6,9 +6,10 @@ import {
   font__Color,
   otpVerificationText,
 } from "../../constants/Constant";
-import OtpInputs from "react-native-otp-inputs";
 import { useEffect, useState } from "react";
 import Button from "../../components/button/Botton";
+import OTPInputView from '@bherila/react-native-otp-input'
+import OtpInputs from "react-native-otp-inputs";
 
 function OTP_Verification({ navigation }) {
   const [optText, setOtpText] = useState("");
@@ -52,7 +53,10 @@ function OTP_Verification({ navigation }) {
         textStyle="#074e02"
       />
       <View style={styles.otpContainer}>
-        <OtpInputs
+        {/* <OtpInputs 
+        numberOfInputs={6}
+        /> */}
+        {/* <OtpInputs
           handleChange={otpHandler}
           autofillFromClipboard={false}
           numberOfInputs={6}
@@ -72,7 +76,28 @@ function OTP_Verification({ navigation }) {
             width: 30,
           }}
           secureTextEntry={false}
+        />  */}
+        <OTPInputView
+          pinCount={6}
+          code={optText}
+          style={{ width: '80%', height: 200 }}
+          codeInputFieldStyle={{ borderColor: font__Color,
+             width: 30,
+            height: 45,
+            // borderWidth: 0,
+            borderBottomWidth: 1,  
+            color: font__Color,}}
+          codeInputHighlightStyle={{ borderColor: 'black',  color: font__Color,}}
+          onCodeChanged={otpHandler}
+          keyboardType="default"
+          onCodeFilled = {(code) => {
+        console.log(`Code is ${code}, you are good to go!`)
+    }}
+          editable
+          autoFocusOnLoad
+          secureTextEntry={false}
         />
+    <Text>{optText}</Text>
       </View>
       <Button onPress={submitHandler}>Submit</Button>
       <View style={styles.resend__container}>
@@ -85,6 +110,7 @@ function OTP_Verification({ navigation }) {
           <Text style={styles.timer__text}>{timer}</Text>
         )}
       </View>
+
     </View>
   );
 }
@@ -95,10 +121,15 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     backgroundColor: background__Color,
   },
+  borderStyleBase: {
+    width: 30,
+    height: 45
+  },
+
   otpContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 50,
+    //  marginVertical: 50,
   },
   resend__container: {
     marginTop: 10,

@@ -11,7 +11,7 @@ import {
 
 // Qr code reference
 // https://aboutreact.com/generation-of-qr-code-in-react-native/
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.root__container}>
       <View style={styles.body__container}>
@@ -66,7 +66,7 @@ const Home = () => {
           <Text style={styles.menu__text}>My Profile</Text>
         </Pressable>
         <Pressable style={styles.menu__btn}>
-          <Text style={styles.menu__text}>Dashboard</Text>
+          <Text style={styles.menu__text} onPress={() => navigation.navigate("dashboard")}>Dashboard</Text>
         </Pressable>
       </View>
     </View>

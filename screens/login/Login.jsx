@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Botton";
 import logo from "../../assets/images/logo.png";
@@ -73,13 +74,13 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <SafeAreaView style={[styles.passwordContainer]}>
-        <SafeAreaView>
+        <SafeAreaView  style={styles.eyeIconContainer}>
           <TouchableOpacity
-            style={styles.eyeIconContainer}
+           
             onPress={() => setShowPassword(!showPassword)}
           >
-            <Ionicons
-              name={showPassword ? "eye-off" : "eye"}
+            <Entypo
+              name={showPassword ? "eye" : "eye-with-line"}
               size={24}
               color="black"
             />
@@ -105,7 +106,7 @@ const LoginScreen = ({ navigation }) => {
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
       </SafeAreaView>
-      <SafeAreaView style={styles.signupTextCont}>
+      <SafeAreaView >
         <Text style={styles.signupText}>Don't have an account yet?</Text>
         <Button onPress={() => navigation.navigate("signup")}>
           Proceed to Signup{" "}
@@ -160,20 +161,22 @@ const styles = StyleSheet.create({
     height: 50,
     width: 300,
     marginBottom: 20,
+    justifyContent: 'center'
   },
   passwordInput: {
     height: 50,
     width: 300,
     borderRadius: 10,
     marginBottom: 20,
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     fontSize: 18,
     color: "#0D0D0D",
     backgroundColor: "#FFFFFF",
-    position: "relative",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'center'
+    // position: "relative",
+    // flexDirection: "row",
+    // justifyContent: "space-between",
+    // alignItems: "center",
   },
   passwordContainer: {
     // width: 300,
@@ -185,7 +188,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     paddingHorizontal: 20,
-
+    marginTop: 10,
     fontSize: 18,
     color: "#0D0D0D", // dark green
     // backgroundColor: "#FFFFFF", // white
@@ -193,9 +196,9 @@ const styles = StyleSheet.create({
   eyeIconContainer: {
     padding: 10,
     position: "absolute",
-    right: "90%",
+    right: "80%",
     zIndex: 1,
-    // top: 15,
+     top: 15,
     bottom: -15,
   },
   errorBorder: {

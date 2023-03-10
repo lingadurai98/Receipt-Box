@@ -14,6 +14,7 @@ import Input from "../../components/input/Input";
 import Checkbox from "expo-checkbox";
 import { Entypo } from "@expo/vector-icons";
 import { background__Color, button__Color } from "../../constants/Constant";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Signup = ({ navigation }) => {
   const termsAndConditions =
@@ -31,7 +32,8 @@ const Signup = ({ navigation }) => {
   const [mailvalidate, setmailvalidate] = useState(false);
   const [passwordvalidate, setpasswordvalidate] = useState(false);
   const [confirmpasswordvalidate, setconfirmpasswordvalidate] = useState(false);
-  const [trigger, settrigger] = useState(false);
+  const [trigger, settrigger] = useState(0);
+  const [btntoggler , setbtntoggler] = useState(false)
 
   const termsHandler = () => {
     Alert.alert("Terms & Conditions", termsAndConditions, [
@@ -55,15 +57,23 @@ const Signup = ({ navigation }) => {
       passwordvalidate === true &&
       confirmpasswordvalidate === true
     ) {
-      navigation.navigate("otpPage");
-      settrigger(false);
+      if (toggleCheckBox==false) {
+        setbtntoggler(true)
+      } 
+      else{
+        setbtntoggler(false)
+        navigation.navigate("otpPage");
+        settrigger(0);
+      }
+     
+      
     } else {
       return;
     }
-  }, [pwerror, cnfpwerror, emailerror, trigger]);
+  }, [pwerror, cnfpwerror, emailerror, trigger , btntoggler , toggleCheckBox]);
 
   const handleSignup = () => {
-    settrigger(true);
+    settrigger(Math.random());
     console.log(cnfpwerror);
 
     // if (!isError) {
@@ -125,7 +135,7 @@ const Signup = ({ navigation }) => {
         console.log("dismiss");
       }}
     >
-      <View style={styles.SignupContainer}>
+      <SafeAreaView  style={styles.SignupContainer}>
         <Header
           heading="Signup"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
@@ -151,7 +161,7 @@ const Signup = ({ navigation }) => {
         <View
           style={[
             styles.inputContainerTwo,
-            passwordvalidate ? styles.transparentborder : styles.redborder,
+            // passwordvalidate ? styles.transparentborder : styles.redborder,
           ]}
         >
           <View style={styles.eyeIcon}>
@@ -223,9 +233,11 @@ const Signup = ({ navigation }) => {
         <View>
           <Button
             children="Sign Up"
-            disabled={toggleCheckBox}
+            // disabled={toggleCheckBox}
             style={styles.button}
             onPress={handleSignup}
+            disabled={btntoggler}
+
           />
         </View>
         <View style={styles.loginBtnContainer}>
@@ -238,7 +250,8 @@ const Signup = ({ navigation }) => {
             onPress={handleLogin}
           />
         </View>
-      </View>
+      </SafeAreaView>
+
     </TouchableWithoutFeedback>
   );
 };
@@ -249,14 +262,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     backgroundColor: background__Color,
+    paddingVertical: 100,
   },
   inputContainerOne: {
+
     padding: 15,
     height: 60,
     justifyContent: "center",
     alignItems: "center",
     width: 300,
-    marginTop: 15,
+    marginTop: 25,
   },
   input: {
     borderColor: "transparent",
@@ -271,35 +286,30 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   inputContainerTwo: {
-    marginTop: 10,
+    marginTop: 23,
     padding: 15,
     height: 60,
     justifyContent: "center",
     alignItems: "center",
     width: 300,
     flexDirection: "row-reverse",
-    // borderBottomColor: passwordvalidate ? "transparent" : "red",
+
   },
-  redborder: {
-    borderBottomColor: "red",
-  },
-  transparentborder: {
-    borderBottomColor: "transparent",
-  },
+
   eyeIcon: {
     position: "absolute",
     right: "90%",
     zIndex: 1,
-    top: 15,
+    top: -5,
   },
   eyeIconone: {
     position: "absolute",
     right: "90%",
     zIndex: 1,
-    top: 15,
+    top: -5,
   },
   inputContainerThree: {
-    marginTop: 15,
+    marginTop: 23,
     // marginBottom: 20,
     padding: 15,
     height: 60,
@@ -309,8 +319,8 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse",
   },
   termsContainer: {
-    marginTop: 10,
-    padding: 10,
+    marginTop: 5,
+    // padding: 10,
     flexDirection: "row",
   },
   checkbox: {
@@ -325,7 +335,7 @@ const styles = StyleSheet.create({
     color: button__Color,
   },
   loginBtnContainer: {
-    marginTop: 15,
+    marginTop: 5,
     justifyContent: "center",
     alignItems: "center",
   },
