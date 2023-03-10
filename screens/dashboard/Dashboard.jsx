@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     labelContainer: {
-        // marginTop: 10,
+         marginTop: 10,
         width: 300,
         // borderColor: 'black',
         // borderWidth: 1,
