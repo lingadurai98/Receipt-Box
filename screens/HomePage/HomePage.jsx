@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
-  Button,
 } from "react-native";
+import Button from "../../components/button/Botton";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { MaterialIcons } from "@expo/vector-icons";
 import { background__Color } from "../../constants/Constant";
@@ -133,11 +133,11 @@ const WelcomeScreen = () => {
                 style={styles.input}
               />
             </View>
-            <TouchableOpacity style={styles.button} onPress={handleUpdatePress}>
-              <Text style={styles.buttonText}>Update</Text>
+            <TouchableOpacity>
+              <Button onPress={handleUpdatePress}>Update</Button>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleCancelPress}>
-              <Text style={styles.buttonText}>Cancel</Text>
+            <TouchableOpacity>
+              <Button onPress={handleCancelPress}>Cancel</Button>
             </TouchableOpacity>
           </View>
         </View>
