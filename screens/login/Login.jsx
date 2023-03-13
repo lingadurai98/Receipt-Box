@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   forgotPasswordContainer: {
-    marginVertical: 10,
+    marginVertical: 5,
     alignItems: "center",
   },
   forgotPasswordText: {
@@ -144,14 +144,14 @@ const styles = StyleSheet.create({
   logoContainer: {
     justifyContent: "flex-start",
     alignItems: "center",
-    marginBottom: 50,
+    marginBottom: 5,
   },
   logo: {
     width: 100,
     height: 100,
   },
   logoText: {
-    marginTop: 30,
+    // marginTop: 30,
     textAlign: "center",
     fontSize: 16,
     color: "#0D0D0D",
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 300,
     borderRadius: 10,
-    marginBottom: 20,
+    // marginBottom: 20,
     // paddingHorizontal: 20,
     fontSize: 18,
     color: "#0D0D0D",
