@@ -2,12 +2,8 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import logo from "../../assets/images/logo.png";
 import QRCode from "react-native-qrcode-svg";
-import {
-  background__Color,
-  button__Color,
-  heading__Color,
-  input__Text__Color,
-} from "../../constants/Constant";
+import { background__Color, button__Color } from "../../constants/Constant";
+import Menubar from "../../components/menubar/Menubar";
 
 // Qr code reference
 // https://aboutreact.com/generation-of-qr-code-in-react-native/
@@ -58,17 +54,7 @@ const Home = () => {
           </Text>
         </View>
       </View>
-      <View style={styles.menu__container}>
-        <Pressable style={styles.menu__btn}>
-          <Text style={styles.menu__text}>Home</Text>
-        </Pressable>
-        <Pressable style={styles.menu__btn}>
-          <Text style={styles.menu__text}>My Profile</Text>
-        </Pressable>
-        <Pressable style={styles.menu__btn}>
-          <Text style={styles.menu__text}>Dashboard</Text>
-        </Pressable>
-      </View>
+      <Menubar />
     </View>
   );
 };
@@ -109,24 +95,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     textAlign: "center",
     paddingHorizontal: 20,
-  },
-  menu__container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: heading__Color,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-  },
-
-  menu__btn: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  menu__text: {
-    textAlign: "center",
-    fontSize: 18,
-    color: background__Color,
   },
 });
 

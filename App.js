@@ -7,14 +7,14 @@ import {
 } from "react-native";
 
 import MyStack from "./navigation/MyStack";
+import Alltransactions from "./screens/allTransactions/Alltransactions";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <SafeAreaView style={styles.container}>
-        <MyStack />
-      </SafeAreaView>
-    </View>
+    <SafeAreaView style={styles.container}>
+      {/* <MyStack /> */}
+      <Alltransactions />
+    </SafeAreaView>
   );
 }
 

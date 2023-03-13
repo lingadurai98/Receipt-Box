@@ -61,3 +61,168 @@ Citrus Greens:
 
 
 */
+
+export const dummyTransactionData = [
+  {
+    transactionNumber: "INV011#44551",
+    place: "at Macy's ,New Yordsdfjksdjfjsldjfsdjlfjl",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44552",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44553",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44554",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44555",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44556",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44557",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44558",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+
+  {
+    transactionNumber: "INV011#44559",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44560",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44561",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44562",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44563",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44564",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44565",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44566",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#4456",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44567",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44568",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+  {
+    transactionNumber: "INV011#44569",
+    place: "at Macy's ,New Yord",
+    date: "07-02-2023",
+    time: "12:34PM",
+    amount: 34.0,
+  },
+];
+
+// DropDown Items
+// DropDown Items
+export const dropDownDummyItems = [
+  {
+    id: 1,
+    value: "Select",
+  },
+  {
+    id: 2,
+    value: "Electronics",
+  },
+  {
+    id: 3,
+    value: "Food",
+  },
+  {
+    id: 4,
+    value: "Hospital",
+  },
+];

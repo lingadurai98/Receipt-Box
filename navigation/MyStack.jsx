@@ -4,6 +4,7 @@ import CreateEmailAddress from "../screens/createEmailAddress/CreateEmailAddress
 import Home from "../screens/home/Home";
 import LoginScreen from "../screens/login/Login";
 import OTP_Verification from "../screens/otp_verification/OTP_Verification";
+import Alltransactions from "../screens/allTransactions/Alltransactions";
 import Signup from "../screens/signup/Signup";
 
 const MyStack = () => {
@@ -36,6 +37,11 @@ const MyStack = () => {
         <Stack.Screen
           name="home"
           component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="allTransaction"
+          component={Alltransactions}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
