@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderStyle: "dashed",
     borderWidth: 1,
-    borderColor: "red",
+    borderColor: "#346800ff",
   },
   table__heading: {
     flex: 1,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderStyle: "dashed",
     borderBottomWidth: 1,
-    borderColor: "red",
+    borderColor: "#346800ff",
   },
   table__data: {
     flex: 1,
