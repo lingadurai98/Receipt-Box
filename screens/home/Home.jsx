@@ -63,7 +63,7 @@ const Home = ({ navigation }) => {
           <Text style={styles.menu__text}>Home</Text>
         </Pressable>
         <Pressable style={styles.menu__btn}>
-          <Text style={styles.menu__text}>My Profile</Text>
+          <Text style={styles.menu__text} onPress={() => navigation.navigate("profile")}>My Profile</Text>
         </Pressable>
         <Pressable style={styles.menu__btn}>
           <Text style={styles.menu__text} onPress={() => navigation.navigate("dashboard")}>Dashboard</Text>
